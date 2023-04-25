@@ -26,8 +26,6 @@ tmiClient.on("connected", () => {
     console.log("connection with chat has been made!")
 })
 
-await stopInstancesByTag()
-
 tmiClient.on('message', (channel, tags, message, self) => {
 
     if(message.includes("PaceMan")) {
