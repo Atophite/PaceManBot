@@ -18,6 +18,12 @@ function sendNotification() {
 }
 
 client.connect();
+client.on("connecting", () => {
+    console.log("connecting with chat...")
+}) 
+client.on("connected", () => {
+    console.log("connection with chat has been made!")
+}) 
 
 client.on('message', (channel, tags, message, self) => {
 
