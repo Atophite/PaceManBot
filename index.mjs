@@ -2,9 +2,10 @@
 import * as tmi from "tmi.js"
 import { EmbedBuilder, WebhookClient } from 'discord.js';
 
+
 const webhookClient = new WebhookClient({ url: 'https://discord.com/api/webhooks/1100451423478628442/yqIzp1ov9D-zAMlRSa3MP2t4RIeq3NTgrRXaQS3ouBZk8epvHXsMiy68lW-Z5z2P8Pt2' });
 
-const client = new tmi.Client({
+const tmiClient = new tmi.Client({
 	channels: [ 'xqc' ]
 });
 
@@ -17,15 +18,17 @@ function sendNotification() {
     console.log("discord notification sent")
 }
 
-client.connect();
-client.on("connecting", () => {
+tmiClient.connect();
+tmiClient.on("connecting", () => {
     console.log("connecting with chat...")
 }) 
-client.on("connected", () => {
+tmiClient.on("connected", () => {
     console.log("connection with chat has been made!")
-}) 
+})
 
-client.on('message', (channel, tags, message, self) => {
+await stopInstancesByTag()
+
+tmiClient.on('message', (channel, tags, message, self) => {
 
     if(message.includes("PaceMan")) {
         console.log(`${tags['display-name']}: ${message}`);
