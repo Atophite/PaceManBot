@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "discord.js": "^14.9.0",
     "tmi.js": "^1.8.5"
   }
 }
