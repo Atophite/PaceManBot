@@ -15,7 +15,7 @@ let paceManCounter = 0
 
 function sendNotification() {
     webhookClient.send({
-      content: `A goodseed has been detected by chat!`
+      content: `A godseed has been detected by chat!`
     });
     console.log("discord notification sent")
 }
