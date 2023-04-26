@@ -33,6 +33,10 @@ tmiClient.on("connected", () => {
     console.log("connection with chat has been made!")
 })
 
+tmiClient.on("disconnected", () => {
+    console.log("connection has been lost with chat!")
+})
+
 tmiClient.on('message', (channel, tags, message, self) => {
 
     
