@@ -5,13 +5,18 @@ import { EmbedBuilder, WebhookClient } from 'discord.js';
 
 const webhookClient = new WebhookClient({ url: 'https://discord.com/api/webhooks/1100451423478628442/yqIzp1ov9D-zAMlRSa3MP2t4RIeq3NTgrRXaQS3ouBZk8epvHXsMiy68lW-Z5z2P8Pt2' });
 const FREE_CHATS = 3
+const PACEMAN_DETECTION = 5
+const CHAT_TRESHHOLD = 100
+
 let currentFreeChats = 0
+let newChats = 0
+let paceManCounter = 0
 
 const tmiClient = new tmi.Client({
 	channels: [ 'xqc' ]
 });
 
-let paceManCounter = 0
+
 
 function sendNotification() {
     webhookClient.send({
@@ -30,6 +35,8 @@ tmiClient.on("connected", () => {
 
 tmiClient.on('message', (channel, tags, message, self) => {
 
+    newChats++
+
     if(message.includes("PaceMan")) {
         console.log(`${tags['display-name']}: ${message}`);
         paceManCounter++
@@ -45,9 +52,13 @@ tmiClient.on('message', (channel, tags, message, self) => {
     }
 
 
-    if(paceManCounter == 3) {
-        sendNotification()
-        console.log("God seed?")
+    if(paceManCounter == PACEMAN_DETECTION) {
+        if(newChats >= CHAT_TRESHHOLD) {
+            sendNotification()
+            console.log("God seed?")
+            newChats = 0
+        }
+        
     }
     
 });
