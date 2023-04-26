@@ -35,7 +35,7 @@ tmiClient.on("connected", () => {
 
 tmiClient.on('message', (channel, tags, message, self) => {
 
-    newChats++
+    
 
     if(message.includes("PaceMan")) {
         console.log(`${tags['display-name']}: ${message}`);
@@ -49,6 +49,9 @@ tmiClient.on('message', (channel, tags, message, self) => {
             paceManCounter = 0
             console.log("counter has been broken!")
         }
+    }
+    else {
+        newChats++
     }
 
 
