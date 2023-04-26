@@ -25,7 +25,9 @@ function sendNotification() {
     console.log("discord notification sent")
 }
 
+console.log("welcome to PaceMan bot")
 tmiClient.connect();
+
 tmiClient.on("connecting", () => {
     console.log("connecting with chat...")
 }) 
