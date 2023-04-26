@@ -4,6 +4,8 @@ import { EmbedBuilder, WebhookClient } from 'discord.js';
 
 
 const webhookClient = new WebhookClient({ url: 'https://discord.com/api/webhooks/1100451423478628442/yqIzp1ov9D-zAMlRSa3MP2t4RIeq3NTgrRXaQS3ouBZk8epvHXsMiy68lW-Z5z2P8Pt2' });
+const FREE_CHATS = 3
+let currentFreeChats = 0
 
 const tmiClient = new tmi.Client({
 	channels: [ 'xqc' ]
@@ -33,13 +35,19 @@ tmiClient.on('message', (channel, tags, message, self) => {
         paceManCounter++
     }
     else if (paceManCounter > 0) {
-        paceManCounter = 0
-        console.log("counter has been broken!")
+        currentFreeChats++
+
+        if(currentFreeChats >= FREE_CHATS) {
+            paceManCounter = 0
+            console.log("counter has been broken!")
+        }
     }
+
 
     if(paceManCounter == 3) {
         sendNotification()
         console.log("God seed?")
     }
+    
 });
 	
