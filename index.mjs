@@ -33,6 +33,7 @@ tmiClient.on('message', (channel, tags, message, self) => {
     if(message.includes("PaceMan")) {
         console.log(`${tags['display-name']}: ${message}`);
         paceManCounter++
+        currentFreeChats = 0
     }
     else if (paceManCounter > 0) {
         currentFreeChats++
