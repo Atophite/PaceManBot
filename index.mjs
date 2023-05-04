@@ -5,8 +5,8 @@ import { EmbedBuilder, WebhookClient } from 'discord.js';
 const webhookClient = new WebhookClient({ url: 'https://discord.com/api/webhooks/1100451423478628442/yqIzp1ov9D-zAMlRSa3MP2t4RIeq3NTgrRXaQS3ouBZk8epvHXsMiy68lW-Z5z2P8Pt2' });
 
 const FREE_CHATS = 3
-const PACEMAN_DETECTION = 5
-const CHAT_TRESHHOLD = 1000
+const PACEMAN_DETECTION = 6
+const CHAT_TRESHHOLD = 10000
 
 let currentFreeChats = 0
 let newChats = 0
